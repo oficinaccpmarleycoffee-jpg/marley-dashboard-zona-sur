@@ -1,0 +1,18 @@
+name: Actualizar Dashboard Marley
+
+on:
+  repository_dispatch:
+    types: [actualizar-dashboard-marley]
+
+jobs:
+  recibir-actualizacion:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Confirmar señal de Power Automate
+        run: |
+          echo "Evento recibido correctamente desde Power Automate"
+          echo "Accion: ${{ github.event.client_payload.accion }}"
