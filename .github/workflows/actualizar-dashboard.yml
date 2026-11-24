@@ -11,7 +11,7 @@ jobs:
       - name: Probar acceso al JSON de OneDrive
         shell: bash
         run: |
-          URL='https://marleycoffee-my.sharepoint.com/:u:/g/personal/fabian_bustos_marleycoffee_cl/IQCeXsdTeB7zT6OMxm8iAaB0ARTbwRFbxg7zEv7WfjMnah0?e=h0FWAk'
+          URL="https://marleycoffee-my.sharepoint.com/:u:/g/personal/fabian_bustos_marleycoffee_cl/IQCeXsdTeB7zT6OMxm8iAaB0ARTbwRFbxg7zEv7WfjMnah0?e=h0FWAk"
 
           curl -L "$URL" -o respuesta.txt
 
@@ -20,11 +20,12 @@ jobs:
 
           echo "Tipo detectado:"
           file respuesta.txt
-          echo "Contenido recibido:"
-cat respuesta.txt
-echo
 
-          if grep -q '"actualizadoUTC"' respuesta.txt; then
+          echo "Contenido recibido:"
+          cat respuesta.txt
+          echo ""
+
+          if grep -q "actualizadoUTC" respuesta.txt; then
             echo "OK: GitHub puede leer el JSON."
           else
             echo "ERROR: el enlace no entregó directamente dashboard-data.json."
