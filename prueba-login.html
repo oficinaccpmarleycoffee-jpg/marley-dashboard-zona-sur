@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prueba Dashboard Marley</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <script src="https://alcdn.msauth.net/browser/2.38.3/js/msal-browser.min.js"></script>
+<title>Prueba Dashboard Marley</title>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 800px;
-      margin: 50px auto;
-      padding: 25px;
-    }
+<script
+  type="text/javascript"
+  src="https://alcdn.msauth.net/browser/2.35.0/js/msal-browser.min.js">
+</script>
 
-    button {
-      background: #078b3c;
-      color: white;
-      border: 0;
-      padding: 14px 22px;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+<style>
+body {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 25px;
+}
 
-    #resultado {
-      margin-top: 25px;
-      padding: 20px;
-      background: #f4f6fa;
-      border-radius: 10px;
-      white-space: pre-wrap;
-    }
-  </style>
+button {
+  background: #078b3c;
+  color: white;
+  border: 0;
+  padding: 14px 22px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#resultado {
+  margin-top: 25px;
+  padding: 20px;
+  background: #f4f6fa;
+  border-radius: 10px;
+  white-space: pre-wrap;
+}
+</style>
 </head>
 
 <body>
@@ -40,18 +44,41 @@
 <h1>Prueba Dashboard Marley</h1>
 
 <p>
-  Esta página comprobará el acceso corporativo a los datos del dashboard.
+Esta página comprobará el acceso corporativo a los datos del dashboard.
 </p>
 
-<button onclick="iniciar()">Ingresar con Microsoft 365</button>
+<button id="btnLogin">
+Ingresar con Microsoft 365
+</button>
 
 <div id="resultado">
-Sin conexión todavía.
+Cargando Microsoft Authentication Library...
 </div>
 
 <script>
-const CLIENT_ID = "dcf3cada-46f1-498b-bd93-b6ee5c1c98f0";
-const TENANT_ID = "b98a3972-6a92-4c64-a757-28f891429a20";
 
-const SHARE_URL =
-"https://marleycoffee
+const resultado = document.getElementById("resultado");
+
+if (typeof msal === "undefined") {
+
+  resultado.innerText =
+    "ERROR: No fue posible cargar Microsoft Authentication Library.";
+
+} else {
+
+  resultado.innerText =
+    "Microsoft Authentication Library cargada correctamente.\nPuedes ingresar.";
+
+  const msalConfig = {
+    auth: {
+      clientId: "dcf3cada-46f1-498b-bd93-b6ee5c1c98f0",
+
+      authority:
+        "https://login.microsoftonline.com/b98a3972-6a92-4c64-a757-28f891429a20",
+
+      redirectUri:
+        "https://oficinaccpmarleycoffee-jpg.github.io/marley-dashboard-zona-sur/prueba-login.html"
+    },
+
+    cache: {
+      cacheLocation: "sessionStorage",
