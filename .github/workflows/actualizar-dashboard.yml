@@ -20,6 +20,9 @@ jobs:
 
           echo "Tipo detectado:"
           file respuesta.txt
+          echo "Contenido recibido:"
+cat respuesta.txt
+echo
 
           if grep -q '"actualizadoUTC"' respuesta.txt; then
             echo "OK: GitHub puede leer el JSON."
