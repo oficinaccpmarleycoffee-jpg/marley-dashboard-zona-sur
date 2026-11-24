@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prueba Dashboard Marley</title>
+
+  <script src="https://alcdn.msauth.net/browser/2.38.3/js/msal-browser.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 25px;
+    }
+
+    button {
+      background: #078b3c;
+      color: white;
+      border: 0;
+      padding: 14px 22px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #resultado {
+      margin-top: 25px;
+      padding: 20px;
+      background: #f4f6fa;
+      border-radius: 10px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Prueba Dashboard Marley</h1>
+
+<p>
+  Esta página comprobará el acceso corporativo a los datos del dashboard.
+</p>
+
+<button onclick="iniciar()">Ingresar con Microsoft 365</button>
+
+<div id="resultado">
+Sin conexión todavía.
+</div>
+
+<script>
+const CLIENT_ID = "dcf3cada-46f1-498b-bd93-b6ee5c1c98f0";
+const TENANT_ID = "b98a3972-6a92-4c64-a757-28f891429a20";
+
+const SHARE_URL =
+"https://marleycoffee
